@@ -74,12 +74,13 @@ input {
   background-color: #1035ac;
   color: #ffb7ce;
   padding: 4rem 0;
-
+  overflow-y: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 1 rem;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .actions button,
