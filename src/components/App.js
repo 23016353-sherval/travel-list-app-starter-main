@@ -6,17 +6,22 @@ import Stats from "./stats";
 
 
 // Initial packing items
-// const initialItems = [
-//   { id: 1, description: "Shiwrt", quantity: 5, packed: false },
-//   { id: 2, description: "Pants", quantity: 2, packed: false },
-// ];
+const initialItems = [
+  { id: 1, description: "Shirt", quantity: 5, packed: false },
+  { id: 2, description: "Pants", quantity: 2, packed: false },
+];
 
 
 function App() {
 
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState(initialItems)
+  const maxItems = 28;
 
   function handleAddItems(item) {
+    if (items.length >= maxItems) {
+      alert(`You can only add up to ${maxItems} items.`);
+      return; // Prevent adding more items
+    }
     setItems((prevItems) => [...prevItems, item]); // Create a new array with the new item and spread the existing ones
   }
 

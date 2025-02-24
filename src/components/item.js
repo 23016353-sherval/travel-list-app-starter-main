@@ -5,6 +5,8 @@ function Item({item, togglePacked, handleDeleteItem, handleUpdateItem}) {
         textDecoration: item.packed ? "line-through" : "none", // Conditional strikethrough
         color: item.packed ? "#c5ab5c" : "", // Optional: Change text color when packed
         opacity: item.packed ? "50%" : "",
+        display: "flex",
+        alignItems: "center"
       };
       const buttonStyle = {
         textDecoration: "none", // Ensure no strikethrough on the button
@@ -14,19 +16,21 @@ function Item({item, togglePacked, handleDeleteItem, handleUpdateItem}) {
         overflow: 'hidden',
         alignitems: 'center',
         margin: '3px',
-        textalign: 'center'
+        textalign: 'center',
       };
       
     return (
       <li>
-        <span style={itemStyle}>
+        <span style={{...itemStyle, display: "flex", alignItems: "center"}}>
           <input
             type="checkbox"
             checked={item.packed}
             onChange={() => handleUpdateItem(item.id)} 
             style={{ marginRight: '10px'}}
           />
-          {item.description} x{item.quantity}
+          <li className={item.packed ? "packed": ""}>
+          {item.description} ({item.quantity})
+        </li>
         </span>
     
       <button 
